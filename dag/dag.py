@@ -25,6 +25,11 @@ class Node(object):
 
 def isReachable(frm, to):
     """ Test if "to" Node is reachable from "frm" Node in a DAG
+    
+    NOTE: This implementation is only for demonstrating the recursive DAG
+    traversal algorithm. In practical terms, cPython defaults to max recursion
+    depth of 1000 (which may be overridden), raising RuntimeError when exceeded.
+    
     :param Node frm: (for reviewer: "from" would collide with python keyword)
     :param Node to:
     
