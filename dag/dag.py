@@ -28,7 +28,7 @@ def isReachable(frm, to):
     :param Node frm: (for reviewer: "from" would collide with python keyword)
     :param Node to:
     
-    :returns: True if "to" is reachable, False if Not
+    :returns: True if "to" is reachable, False if not
     """
     for node in frm.outbound:
         # Avoid searching a previously-visited sub-DAG
