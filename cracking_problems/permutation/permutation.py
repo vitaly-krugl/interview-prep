@@ -1,4 +1,9 @@
 def permutations(values):
+    """Create generator that yields permutations of the given sequence
+
+    :param values: sequence of values to permute over
+    :return: generator that yields permutations of the given sequence
+    """
     return _doPermutations(values=values, perm=values[0:0])
 
 
