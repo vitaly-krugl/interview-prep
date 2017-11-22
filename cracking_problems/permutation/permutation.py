@@ -1,5 +1,5 @@
 def permutations(values):
-    """Create generator that yields permutations of the given sequence
+    """Create a generator that yields permutations of the given sequence
     using an accumulator
 
     :param values: sequence of values to permute over
@@ -21,8 +21,8 @@ def _doPermutations(values, perm):
 
 
 def permNoAccumulator(values):
-    """Create generator that yields permutations of the given sequence
-    without an accumulator
+    """Create a generator that yields permutations of the given sequence
+    without the use of an explicit accumulator arg
 
     :param values: sequence of values to permute over
     :return: generator that yields permutations of the given sequence
