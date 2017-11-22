@@ -1,15 +1,14 @@
-def permute(values):
-    results = []
-    _doPermutations(values=values, perm=values[0:0], results=results)
-    return results
+def permutations(values):
+    return _doPermutations(values=values, perm=values[0:0])
 
-def _doPermutations(values, perm, results):
+
+def _doPermutations(values, perm):
     if not values:
-        results.append(perm)
+        yield perm
         print perm
     else:
         for i in xrange(len(values)):
-            _doPermutations(
-                values=values[0:i] + values[i+1:],
-                perm=perm + values[i:i+1],
-                results=results)
+            for result in _doPermutations(
+                    values=values[0:i] + values[i+1:],
+                    perm=perm + values[i:i+1]):
+                 yield result
