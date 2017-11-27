@@ -15,7 +15,7 @@ def fib(n):
 
 
 def fibs(n):
-    """ Create generator that yields fibonacci numbers through the Nth number
+    """ Create a generator that yields fibonacci numbers from 0th through the Nth.
 
     :param int n: the value of N
     :return: generator that yields fibonacci numbers through the Nth number
