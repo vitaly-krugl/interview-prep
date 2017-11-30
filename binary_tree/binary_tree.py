@@ -79,6 +79,8 @@ class BinaryTree(object):
 
         self._removeNode(node, parent)
 
+        return value
+
     def _removeNode(self, node, parent):
         """Remove the given node from the tree, taking into account that such
         node could have 0, 1, or two children and adjusting the tree accordingly
