@@ -38,42 +38,42 @@ class BinaryTree(object):
                 else:
                     parent = parent.right
 
-    def find(self, value):
+    def find(self, key):
         """Return a matching value
 
-        :param value: value to match
+        :param key: key to match against values in tree
         :return: matching value
         :raises: KeyError if matching node not found
         """
-        return self._findNodeAndParent(value)[0].value
+        return self._findNodeAndParent(key)[0].value
 
-    def matchingValues(self, value):
+    def matchingValues(self, key):
         """ Create a generator that yields matching values
 
-        :param value: the value to match
+        :param key: the key to match against values in tree
         :return: generator that yields matching values
         :rtype: generator
         """
         # Find the first matching node
         try:
-            node = self._findNodeAndParent(value)[0]
+            node = self._findNodeAndParent(key)[0]
         except KeyError:
             node = None
 
-        while node is not None and node.value == value:
+        while node is not None and node.value == key:
             yield node.value
 
             # Note: our insertion places nodes with equal keys on the left
             node = node.left
 
-    def remove(self, value):
-        """ Remove a node with matching value
+    def remove(self, key):
+        """ Remove a node with value that matches the given key
 
-        :param value: value to match
+        :param key: key to match against values in tree
         :return: value of removed node
         :raises: KeyError if matching node not found
         """
-        node, parent = self._findNodeAndParent(value)
+        node, parent = self._findNodeAndParent(key)
 
         value = node.value
 
@@ -137,8 +137,8 @@ class BinaryTree(object):
           tree.insert(Node(-1))
           tree.insert(Node(20))
 
-          for node in tree.nodes():
-              print node
+          for value in tree.values():
+              print value
         """
 
         def traverse(node):
@@ -148,20 +148,37 @@ class BinaryTree(object):
             if node is None:
                 return
 
-            for child in traverse(node.left):
-                yield child.value
+            for value in traverse(node.left):
+                yield value
 
             yield node.value
 
-            for child in traverse(node.right):
-                yield child.value
+            for value in traverse(node.right):
+                yield value
 
         return traverse(self._root)
 
-    def _findNodeAndParent(self, value):
+
+    def valuesNonRecursive(self):
+        """Non-recursive implementation of generator that yields the tree's
+        values in-order
+
+        Example:
+          tree = BinaryTree()
+          tree.insert(Node(8))
+          tree.insert(Node(-1))
+          tree.insert(Node(20))
+
+          for value in tree.valuesNonRecursive():
+              print value
+        """
+        pass
+
+
+    def _findNodeAndParent(self, key):
         """Find the first matching node and its parent
 
-        :param value: value to match
+        :param key: key to match against values in tree
         :return: two-tuple of matching node and its parent node; the parent will
           be None if the matching node is the root.
         :raises: KeyError if not found
@@ -170,12 +187,12 @@ class BinaryTree(object):
         node = self._root
 
         while node is not None:
-            if node.value == value:
+            if node.value == key:
                 break
 
             # Keep looking
             parent = node
-            if value <= node.value:
+            if key <= node.value:
                 node = node.left
             else:
                 node = node.right
