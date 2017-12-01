@@ -17,6 +17,14 @@ class BinaryTree(object):
             for value in initialValues:
                 self.insert(value)
 
+    def clear(self):
+        """Remove all nodes from the tree
+        """
+        for node in self._postorderNodesNR():
+            node.clear()
+
+        self._root = None
+
     def insert(self, value):
         """Insert value into tree
         
@@ -132,6 +140,20 @@ class BinaryTree(object):
           for value in tree.inorderNR():
               print value
         """
+        for node in self._inorderNodesNR():
+            yield node.value
+
+    def postorderNR(self):
+        """Non-recursive implementation of generator that yields the tree's
+        values post-order
+        """
+        for node in self._postorderNodesNR():
+            yield node.value
+
+    def _inorderNodesNR(self):
+        """Non-recursive implementation of generator that yields the tree's
+        nodes in-order
+        """
         stack = []
         node = self._root
         while stack or node is not None:
@@ -140,12 +162,32 @@ class BinaryTree(object):
                 stack.append(node)
                 node = node.left
 
-            # Yield in-order value
+            # Yield in-order node
             node = stack.pop()
-            yield node.value
+            yield node
 
             # Traverse the right subtree, if any
             node = node.right
+
+    def _postorderNodesNR(self):
+        """Create a generator that yields nodes post-order
+        """
+        stack = []
+        node = self._root
+        while stack or node is not None:
+            # Traverse far left, stacking nodes as we go
+            while node is not None:
+                stack.append((node, True)) # set reminder to go right
+                node = node.left
+
+            node, goright = stack.pop()
+
+            if goright:
+                stack.append((node, False))
+                node = node.right
+            else:
+                yield node
+                node = None
 
     def _findNodeAndParent(self, key):
         """Find the first matching node and its parent
@@ -231,6 +273,11 @@ class _Node(object):
         :param value: node's value
         """
         self.value = value
+        self.left = None
+        self.right = None
+
+    def clear(self):
+        self.value = None
         self.left = None
         self.right = None
 
