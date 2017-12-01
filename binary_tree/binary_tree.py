@@ -6,8 +6,16 @@ Binary tree interview practice
 class BinaryTree(object):
     """Binary tree; subset of functionality for coding test"""
     
-    def __init__(self):
+    def __init__(self, initialValues=None):
+        """
+
+        :param sequence initialValues: if not None, the values in this sequence
+          are used to initialize the tree.
+        """
         self._root = None
+        if initialValues is not None:
+            for value in initialValues:
+                self.insert(value)
 
     def insert(self, value):
         """Insert value into tree
@@ -81,6 +89,90 @@ class BinaryTree(object):
 
         return value
 
+    def inorder(self):
+        """Generator that yields the tree's values in-order
+
+        Example:
+          tree = BinaryTree()
+          tree.insert(Node(8))
+          tree.insert(Node(-1))
+          tree.insert(Node(20))
+
+          for value in tree.inorder():
+              print value
+        """
+
+        def traverse(node):
+            """ TODO: rewrite without recursion as cpython has low
+            limit on recursion depth.
+            """
+            if node is None:
+                return
+
+            for value in traverse(node.left):
+                yield value
+
+            yield node.value
+
+            for value in traverse(node.right):
+                yield value
+
+        return traverse(self._root)
+
+    def inorderNR(self):
+        """Non-recursive implementation of generator that yields the tree's
+        values in-order
+
+        Example:
+          tree = BinaryTree()
+          tree.insert(Node(8))
+          tree.insert(Node(-1))
+          tree.insert(Node(20))
+
+          for value in tree.inorderNR():
+              print value
+        """
+        stack = []
+        node = self._root
+        while stack or node is not None:
+            # Traverse far left, stacking nodes as we go
+            while node is not None:
+                stack.append(node)
+                node = node.left
+
+            # Yield in-order value
+            node = stack.pop()
+            yield node.value
+
+            # Traverse the right subtree, if any
+            node = node.right
+
+    def _findNodeAndParent(self, key):
+        """Find the first matching node and its parent
+
+        :param key: key to match against values in tree
+        :return: two-tuple of matching node and its parent node; the parent will
+          be None if the matching node is the root.
+        :raises: KeyError if not found
+        """
+        parent = None
+        node = self._root
+
+        while node is not None:
+            if node.value == key:
+                break
+
+            # Keep looking
+            parent = node
+            if key <= node.value:
+                node = node.left
+            else:
+                node = node.right
+        else:
+            raise KeyError
+
+        return node, parent
+
     def _removeNode(self, node, parent):
         """Remove the given node from the tree, taking into account that such
         node could have 0, 1, or two children and adjusting the tree accordingly
@@ -127,79 +219,6 @@ class BinaryTree(object):
             assert smallestRightNode.left is None or \
                    smallestRightNode.right is None
             self._removeNode(smallestRightNode, smallestRightParent)
-
-    def values(self):
-        """Generator that yields the tree's values in-order
-
-        Example:
-          tree = BinaryTree()
-          tree.insert(Node(8))
-          tree.insert(Node(-1))
-          tree.insert(Node(20))
-
-          for value in tree.values():
-              print value
-        """
-
-        def traverse(node):
-            """ TODO: rewrite without recursion as cpython has low
-            limit on recursion depth.
-            """
-            if node is None:
-                return
-
-            for value in traverse(node.left):
-                yield value
-
-            yield node.value
-
-            for value in traverse(node.right):
-                yield value
-
-        return traverse(self._root)
-
-
-    def valuesNonRecursive(self):
-        """Non-recursive implementation of generator that yields the tree's
-        values in-order
-
-        Example:
-          tree = BinaryTree()
-          tree.insert(Node(8))
-          tree.insert(Node(-1))
-          tree.insert(Node(20))
-
-          for value in tree.valuesNonRecursive():
-              print value
-        """
-        pass
-
-
-    def _findNodeAndParent(self, key):
-        """Find the first matching node and its parent
-
-        :param key: key to match against values in tree
-        :return: two-tuple of matching node and its parent node; the parent will
-          be None if the matching node is the root.
-        :raises: KeyError if not found
-        """
-        parent = None
-        node = self._root
-
-        while node is not None:
-            if node.value == key:
-                break
-
-            # Keep looking
-            parent = node
-            if key <= node.value:
-                node = node.left
-            else:
-                node = node.right
-        else:
-            raise KeyError
-
-        return node, parent
 
 
 class _Node(object):
