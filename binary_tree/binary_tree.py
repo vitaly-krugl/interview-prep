@@ -98,7 +98,7 @@ class BinaryTree(object):
         return value
 
     def inorder(self):
-        """Generator that yields the tree's values in-order
+        """Generator that yields the tree's values in-order recursively
 
         Example:
           tree = BinaryTree()
@@ -127,7 +127,7 @@ class BinaryTree(object):
 
         return traverse(self._root)
 
-    def inorderNR(self):
+    def inorderValuesNR(self):
         """Non-recursive implementation of generator that yields the tree's
         values in-order
 
@@ -137,17 +137,24 @@ class BinaryTree(object):
           tree.insert(Node(-1))
           tree.insert(Node(20))
 
-          for value in tree.inorderNR():
+          for value in tree.inorderValuesNR():
               print value
         """
         for node in self._inorderNodesNR():
             yield node.value
 
-    def postorderNR(self):
+    def postorderValuesNR(self):
         """Non-recursive implementation of generator that yields the tree's
         values post-order
         """
         for node in self._postorderNodesNR():
+            yield node.value
+
+    def preorderValuesNR(self):
+        """Non-recursive implementation of generator that yields the tree's
+        values pre-order
+        """
+        for node in self._preorderNodesNR():
             yield node.value
 
     def _inorderNodesNR(self):
@@ -170,7 +177,8 @@ class BinaryTree(object):
             node = node.right
 
     def _postorderNodesNR(self):
-        """Create a generator that yields nodes post-order
+        """Non-recursive implementation of generator that yields the tree's
+        nodes post-order
         """
         stack = []
         node = self._root
@@ -188,6 +196,20 @@ class BinaryTree(object):
             else:
                 yield node
                 node = None
+
+    def _preorderNodesNR(self):
+        """Non-recursive implementation of generator that yields the tree's
+        nodes pre-order
+        """
+        stack = []
+        node = self._root
+        while stack or node is not None:
+            if node:
+                yield node
+                stack.append(node.right)
+                node = node.left
+            else:
+                node = stack.pop()
 
     def _findNodeAndParent(self, key):
         """Find the first matching node and its parent
