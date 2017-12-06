@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 Assumes maze with walls marked as # (hash) characters. Navigable
 space is represented by space characters. @ (at sign) marks start
@@ -5,7 +6,7 @@ and $ (US Dollar) marks end.
 
 Can move only vertically and horizontally, not diagonally.
 
-Example 7 by 7 maze:
+Example maze:
 
 maze = [
 "####$##",
@@ -19,10 +20,10 @@ maze = [
 
 might result in the following path via BFS:
 
-####.##
-#   ..#
-# ###.#
-# #...#
+####$##
+#   ↑←#
+# ###↑#
+# #→→↑#
 # ##  #
 #     #
 #######
@@ -33,11 +34,16 @@ might result in the following path via BFS:
 from copy import deepcopy
 
 
-GOAL = "$"
-START = "@"
-WALL = "#"
-PASSAGE = " "
-PATH = "."
+GOAL_SYM = "$"
+START_SYM = "@"
+WALL_SYM = "#"
+PASSAGE_SYM = " "
+PATH_SYM_MAP = { # mapping of (row, col) offsets to navigation symbols
+    (0, -1): "←", # left
+    (0, 1):  "→", # right
+    (-1, 0): "↑", # up
+    (1, 0):  "↓"  # down
+}
 
 
 def _candidateNeighbors(maze, cellR, cellC):
@@ -47,7 +53,7 @@ def _candidateNeighbors(maze, cellR, cellC):
                 (cellR-1, cellC),
                 (cellR+1, cellC))
             if (r >= 0 and r < len(maze) and c >= 0 and c < len(maze[r]) and
-                maze[r][c] != WALL)
+                maze[r][c] != WALL_SYM)
     ]
 
 def findShortestPath(maze):
@@ -67,7 +73,7 @@ def findShortestPath(maze):
     goalR = goalC = -1
     for goalR in xrange(len(maze)):
         try:
-            goalC = maze[goalR].index(GOAL)
+            goalC = maze[goalR].index(GOAL_SYM)
         except ValueError:
             continue
         else:
@@ -89,12 +95,12 @@ def findShortestPath(maze):
         neighborDepth = maze[cellR][cellC] + 1
 
         for nR, nC in _candidateNeighbors(maze, cellR, cellC):
-            if maze[nR][nC] == START:
+            if maze[nR][nC] == START_SYM:
                 startR, startC = nR, nC
                 maze[nR][nC] = neighborDepth
                 break
 
-            elif maze[nR][nC] == PASSAGE:
+            elif maze[nR][nC] == PASSAGE_SYM:
                 maze[nR][nC] = neighborDepth
                 workQueue.append((nR, nC))
 
@@ -107,7 +113,7 @@ def findShortestPath(maze):
 
     while maze[cellR][cellC] != 0:
         for nR, nC in _candidateNeighbors(maze, cellR, cellC):
-            if maze[nR][nC] != PASSAGE and maze[nR][nC] < maze[cellR][cellC]:
+            if maze[nR][nC] != PASSAGE_SYM and maze[nR][nC] < maze[cellR][cellC]:
                 cellR, cellC = nR, nC
                 path.append((cellR, cellC))
                 break
@@ -130,8 +136,12 @@ def plotShortestPath(maze):
     maze = [list(row) for row in maze]
 
     # Mark path in maze
-    for r, c in path:
-        maze[r][c] = PATH
+    for i, (r, c) in enumerate(path):
+        if i == len(path) - 1:
+            maze[r][c] = GOAL_SYM
+        else:
+            nextR, nextC = path[i+1]
+            maze[r][c] = PATH_SYM_MAP[(nextR-r, nextC-c)]
 
     # Print maze with path
     for row in maze:
