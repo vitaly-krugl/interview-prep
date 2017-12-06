@@ -242,19 +242,19 @@ class BinaryTree(object):
         node could have 0, 1, or two children and adjusting the tree accordingly
 
         :param Node node: node to remove
-        :param Node parent: parent node of the node to remove or None if the
-          former is the root node.
+        :param Node parent: parent node of the node to remove or None when
+          removing the root node.
         :return: None
         """
 
         if node.left is None or node.right is None:
             # Base case of node having one or zero children: replace parent's
-            # link to matching node with the the only child or None
+            # link to matching node with the only child or None
 
-            if node.left is None:
-                onlyChild = node.right
-            else:
+            if node.left is not None:
                 onlyChild = node.left
+            else:
+                onlyChild = node.right
 
             if parent is None:
                 self._root = onlyChild
@@ -279,9 +279,8 @@ class BinaryTree(object):
 
             # Recursively delete the smallest node in the right subtree. This
             # should trigger the base case since by definition the smallest node
-            # will have no left children and at most one right child.
-            assert smallestRightNode.left is None or \
-                   smallestRightNode.right is None
+            # will have no left child and at most one right child.
+            assert smallestRightNode.left is None
             self._removeNode(smallestRightNode, smallestRightParent)
 
 
