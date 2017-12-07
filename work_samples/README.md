@@ -2,7 +2,7 @@ Here are the links to some of my open-source work on github under github handle 
 
 =========NUMENTA PROJECTS==========
 
-Please note that Numenta open-sourced our code in June of 2015, and all commits were squashed, so much of the work appears to originate from "Numenta Team". Below, I reference some of the modules that I "owned" or contributed to heavily:
+Please note that Numenta open-sourced our code in June of 2015, and all commits were squashed, so much of the work appears to originate from "Numenta Team". Below, I reference some of the modules that I owned or contributed to heavily:
 
 
 NUPIC.CORE:
