@@ -12,9 +12,9 @@ https://github.com/numenta/nupic.core/pull/1285 : Fixed critical issue with the 
 
 BUILD SYSTEM:
 
-https://github.com/numenta/nupic.core/blob/master/ci/build-and-test-nupic-bindings.sh : work sample on build/test script; I originated, others contributed later.
+https://github.com/numenta/nupic.core/blob/0e2f5ac8554fc1addcdd45d4a36b33f7e839b3e2/ci/build-and-test-nupic-bindings.sh : work sample on build/test script; I originated, others contributed later.
 
-https://github.com/numenta/manylinux : Based on my initiative, researched, convinced team, and created a fork of the manylinux python wheel-building project, and adapted it to support the capnproto library build that relies on newer system APIs (based on centos-6 vs. centos-5).
+https://github.com/numenta/manylinux/tree/da197b08d56b057e3e3a4b30c543b316e7a1a78a : Based on my initiative, researched, convinced team, and created a fork of the manylinux python wheel-building project, and adapted it to support the capnproto library build that relies on newer system APIs (based on centos-6 vs. centos-5).
 
 https://github.com/numenta/nupic.core/pull/885 : Major refactoring of nupic.core's build on Windows, Linux, and OS X that restored ability to build external components from source code. The legacy build included many binary components that were pre-compiled by contractor without capability to rebuild them from source or deal with ABI issues.
 
