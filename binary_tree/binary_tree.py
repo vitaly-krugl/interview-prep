@@ -54,6 +54,32 @@ class BinaryTree(object):
                 else:
                     parent = parent.right
 
+
+    def getHeight(self):
+        """Get height of the tree
+
+        :return: height of the tree
+        """
+        stack = []
+        maxH = 0
+        currentH = 0
+        node = self._root
+        while node is not None or stack:
+            while node is not None:
+                currentH += 1
+                stack.append((node, currentH))
+                node = node.left
+
+            maxH = max(maxH, currentH)
+
+            node, currentH = stack.pop()
+
+            # Explore the right subtree
+            node = node.right
+
+        return maxH
+
+
     def find(self, key):
         """Return a matching value
 
