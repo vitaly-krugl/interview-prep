@@ -3,8 +3,13 @@ def permutations(values):
     using an accumulator
 
     :param values: sequence of values to permute over
+
     :return: generator that yields permutations of the given sequence
     """
+    # NOTE `perm=values[0:0]`: we initialize it this way in order to make perm's
+    # initial value of same type as values (e.g., empty string, empty list).
+    # This avoids exceptions from trying to combine values of incompatible types
+    # in our helper function.
     return _doPermutations(values=values, perm=values[0:0])
 
 
@@ -25,6 +30,7 @@ def permNoAccumulator(values):
     without the use of an explicit accumulator arg
 
     :param values: sequence of values to permute over
+    
     :return: generator that yields permutations of the given sequence
     """
     if not values:
