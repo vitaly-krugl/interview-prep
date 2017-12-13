@@ -105,7 +105,7 @@ def findShortestPath(maze):
                 workQueue.append((nR, nC))
 
     if startR == -1:
-         raise ValueError("Start ({}) not found".format(START))
+         raise ValueError("Start ({}) not found".format(START_SYM))
 
     # Construct path from start to goal
     path = [(startR, startC)]
