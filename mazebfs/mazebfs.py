@@ -1,5 +1,7 @@
 # coding=utf-8
 """
+Finds shortest path in maze using BFS (Breadth First Search).
+
 Assumes maze with walls marked as # (hash) characters. Navigable
 space is represented by space characters. @ (at sign) marks start
 and $ (US Dollar) marks end.
@@ -67,7 +69,6 @@ def findShortestPath(maze):
     """
     # Convert the maze into a two-dimensional array
     maze = [ list(line) for line in maze]
-    print maze
 
     # First, locate the goal's coordinates
     goalR = goalC = -1
@@ -82,8 +83,6 @@ def findShortestPath(maze):
         raise ValueError("Goal ({}) not found".format(GOAL))
 
     assert goalR >= 0 and goalC >= 0
-
-    print "GOAL:", goalR, goalC
 
     # DFS until start is reached
     workQueue = [(goalR, goalC)]
@@ -112,14 +111,15 @@ def findShortestPath(maze):
     cellR, cellC = startR, startC
 
     while maze[cellR][cellC] != 0:
+        # Find neighbor with decreasing distance
         for nR, nC in _candidateNeighbors(maze, cellR, cellC):
             if maze[nR][nC] != PASSAGE_SYM and maze[nR][nC] < maze[cellR][cellC]:
                 cellR, cellC = nR, nC
                 path.append((cellR, cellC))
                 break
-
-    for l in maze:
-        print l
+        else:
+            raise Exception("Logic error: failed to find next path node from "
+                            "{},{}".format(cellR, cellC))
 
     return path
 
