@@ -30,7 +30,7 @@ def permNoAccumulator(values):
     without the use of an explicit accumulator arg
 
     :param values: sequence of values to permute over
-    
+
     :return: generator that yields permutations of the given sequence
     """
     if not values:
