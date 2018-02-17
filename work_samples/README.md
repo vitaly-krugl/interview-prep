@@ -1,4 +1,13 @@
-Here are the links to some of my open-source work on github under github handle "vitaly-krugl". This includes Numenta projects as well as external open-source projects (external citations are at the bottom)
+Here are the links to some of my open-source work on github under github handle "vitaly-krugl". This includes Numenta projects as well as external open-source projects (more external citations are at the bottom)
+
+=========RECENT OSS CONTRIBUTIONS=========
+https://github.com/pika:
+* Pull Request: [Implement add_callback_threadsafe in all connection adapters](https://github.com/pika/pika/pull/956)
+* Pull Request: [Use minheap as timeout container and fix collision of multiple SelectConnection timeouts with same deadline and callback](https://github.com/pika/pika/pull/947)
+* Pull Request: [Implemented BlockingConnection acceptance tests for the consume generator encountering server's Basic.Cancel](https://github.com/pika/pika/pull/962)
+* Code Review: [Rename no_ack => auto_ack to match Java and .NET clients](https://github.com/pika/pika/pull/955)
+* Code Review: [Ensure blocked Channel.Close methods are processed](https://github.com/pika/pika/pull/957)
+
 
 =========NUMENTA PROJECTS==========
 
