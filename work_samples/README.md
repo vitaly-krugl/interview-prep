@@ -6,6 +6,7 @@ In https://github.com/pika:
 * Pull Request: [Implement add_callback_threadsafe in all connection adapters](https://github.com/pika/pika/pull/956)
 * Pull Request: [Use minheap as timeout container and fix collision of multiple SelectConnection timeouts with same deadline and callback](https://github.com/pika/pika/pull/947)
 * Pull Request: [Implemented BlockingConnection acceptance tests for the consume generator encountering server's Basic.Cancel](https://github.com/pika/pika/pull/962)
+* Code Review: [BlockingConnection tune for heartbeat=0 properly](https://github.com/pika/pika/pull/966)
 * Code Review: [Rename no_ack => auto_ack to match Java and .NET clients](https://github.com/pika/pika/pull/955)
 * Code Review: [Ensure blocked Channel.Close methods are processed](https://github.com/pika/pika/pull/957)
 
