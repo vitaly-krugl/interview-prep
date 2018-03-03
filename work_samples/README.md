@@ -9,6 +9,7 @@ In https://github.com/pika:
 * Code Review: [BlockingConnection tune for heartbeat=0 properly](https://github.com/pika/pika/pull/966)
 * Code Review: [Rename no_ack => auto_ack to match Java and .NET clients](https://github.com/pika/pika/pull/955)
 * Code Review: [Ensure blocked Channel.Close methods are processed](https://github.com/pika/pika/pull/957)
+* Root-cause of [Blocking channel Publish nevert completes](https://github.com/pika/pika/issues/708#issuecomment-370105566)
 
 
 =========NUMENTA PROJECTS==========
