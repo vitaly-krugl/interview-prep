@@ -44,7 +44,7 @@ Please note that Numenta open-sourced our code in June of 2015, and all commits 
 
 ## MONITORS
 
-https://github.com/numenta/numenta-apps/blob/f79f919e80747fae2e35e6d679f2f0633fe48789/htmengine/htmengine/monitors/rmq_metric_collector_agent.py: collects/aggregates RabbitMQ statistics for analysis, failure detection.
+[Collects/aggregates RabbitMQ statistics for analysis, failure detection](https://github.com/numenta/numenta-apps/blob/f79f919e80747fae2e35e6d679f2f0633fe48789/htmengine/htmengine/monitors/rmq_metric_collector_agent.py)
 
 [Stock symbol validation service](https://github.com/numenta/numenta-apps/blob/81f6e9bb4122c47fbbf6c208c795915027fac473/taurus.metric_collectors/taurus/metric_collectors/xignite/check_company_symbols.py): detects when stock symbols of interest become invalid (e.g., are renamed, obsoleted, incorrectly configured, etc.) and generates an email that results is subsequently processed into a JIRA issue.
 
@@ -58,7 +58,7 @@ https://github.com/numenta/numenta-apps/blob/f79f919e80747fae2e35e6d679f2f0633fe
 
 ## INTEGRATION TESTS
 
-[Model Runner integration tests[(https://github.com/numenta/numenta-apps/commits/2392061961340b24430fb39e8b6603e910bef948/htmengine/tests/integration/model_swapper/model_runner_test.py)
+[Model Runner integration tests](https://github.com/numenta/numenta-apps/commits/2392061961340b24430fb39e8b6603e910bef948/htmengine/tests/integration/model_swapper/model_runner_test.py)
 
 
 ## UNIT TESTS
