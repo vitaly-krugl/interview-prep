@@ -90,6 +90,6 @@ https://github.com/agoragames/haigha : haigha is another python AMQP client that
 
 
 # OLDER WORK IN C/C++ ON WEBOS AT PALM 7+ YEARS AGO
-* [I took over libpalmsocket](https://github.com/openwebos/libpalmsocket/tree/9533a7c46f8d35e69112a8c5e671532d059b2e8d) from a team of engineers. The open/TLS communications abstraction was in very bad shape (systemic bugs, crashes, design, and performance issues). I re-implemented it quickly under severe development schedule pressure. I also identified and worked around several issues in OpenSSL.  The new implementation makes use of the Hierarchical State Machine Engine that I also developed at Palm.
+* [I took over libpalmsocket](https://github.com/openwebos/libpalmsocket/tree/9533a7c46f8d35e69112a8c5e671532d059b2e8d) from a team of engineers. This Plaintext/TLS communications abstraction was in very bad shape (systemic bugs, crashes, design, and performance issues). I re-implemented it quickly under severe development schedule pressure. I also identified and worked around several issues in OpenSSL.  The new implementation makes use of the Hierarchical State Machine Engine that I also developed at Palm.
 
 * My implementation of the [Hierarchical State Machine Engine](https://github.com/openwebos/pmstatemachineengine/tree/34f1a4fa6022259e0b8dc3e8b683782e28659186) based on Miro Samek's book on the subject.
