@@ -9,7 +9,7 @@ In https://github.com/pika:
 * Code Review: [BlockingConnection tune for heartbeat=0 properly](https://github.com/pika/pika/pull/966)
 * Code Review: [Rename no_ack => auto_ack to match Java and .NET clients](https://github.com/pika/pika/pull/955)
 * Code Review: [Ensure blocked Channel.Close methods are processed](https://github.com/pika/pika/pull/957)
-* Root-cause  [Blocking channel Publish nevert completes](https://github.com/pika/pika/issues/708#issuecomment-370105566)
+* Root-cause:  [Blocking channel Publish nevert completes](https://github.com/pika/pika/issues/708#issuecomment-370105566)
 
 
 =========NUMENTA PROJECTS==========
@@ -19,18 +19,18 @@ Please note that Numenta open-sourced our code in June of 2015, and all commits 
 
 NUPIC.CORE:
 
-https://github.com/numenta/nupic.core/pull/1285 : Fixed critical issue with the integration of capnproto serialization library into nupic.core project, including new tests.
+[Fixed critical issue](https://github.com/numenta/nupic.core/pull/1285) with the integration of capnproto serialization library into nupic.core project, including new tests.
 
 
 BUILD SYSTEM:
 
-https://github.com/numenta/nupic.core/blob/0e2f5ac8554fc1addcdd45d4a36b33f7e839b3e2/ci/build-and-test-nupic-bindings.sh : work sample on build/test script; I originated, others contributed later.
+[Build/test script work sample](https://github.com/numenta/nupic.core/blob/0e2f5ac8554fc1addcdd45d4a36b33f7e839b3e2/ci/build-and-test-nupic-bindings.sh); I originated, others contributed later.
 
-https://github.com/numenta/manylinux/tree/da197b08d56b057e3e3a4b30c543b316e7a1a78a : Based on my initiative, researched, convinced team, and created a fork of the manylinux python wheel-building project, and adapted it to support the capnproto library build that relies on newer system APIs (based on centos-6 vs. centos-5).
+[Manylinux python wheel build using Docker](https://github.com/numenta/manylinux/tree/da197b08d56b057e3e3a4b30c543b316e7a1a78a) : Based on my initiative, researched, convinced team, and created a fork of the manylinux python wheel-building docker-based project, and adapted it to support the capnproto library build that relies on newer system APIs (based on centos-6 vs. centos-5).
 
-https://github.com/numenta/nupic.core/pull/885 : Major refactoring of nupic.core's build on Windows, Linux, and OS X that restored ability to build external components from source code. The legacy build included many binary components that were pre-compiled by contractor without capability to rebuild them from source or deal with ABI issues.
+[Major refactoring of nupic.core's build on Windows, Linux, and OS X](https://github.com/numenta/nupic.core/pull/885) that restored ability to build external components from source code. The legacy build included many binary components that were pre-compiled by contractor without capability to rebuild them from source or deal with ABI issues.
 
-https://github.com/numenta/nupic.core/pull/1039 : Fixed symbol preemption issues in Numenta's python extension.
+[Fixed symbol preemption issues](https://github.com/numenta/nupic.core/pull/1039) in Numenta's python extension.
 
 
 SERVICES:
