@@ -26,7 +26,7 @@ Please note that Numenta open-sourced our code in June of 2015, and all commits 
 
 [Build/test script work sample](https://github.com/numenta/nupic.core/blob/0e2f5ac8554fc1addcdd45d4a36b33f7e839b3e2/ci/build-and-test-nupic-bindings.sh); I originated, others contributed later.
 
-[Manylinux python wheel build using Docker](https://github.com/numenta/manylinux/tree/da197b08d56b057e3e3a4b30c543b316e7a1a78a) : Based on my initiative, researched, convinced team, and created a fork of the manylinux python wheel-building docker-based project, and adapted it to support the capnproto library build that relies on newer system APIs (based on centos-6 vs. centos-5).
+[Manylinux python wheel build using Docker](https://github.com/numenta/manylinux/tree/da197b08d56b057e3e3a4b30c543b316e7a1a78a): Based on my initiative, researched, convinced team, and created a fork of the manylinux python wheel-building docker-based project, and adapted it to support the capnproto library build that relies on newer system APIs (based on centos-6 vs. centos-5).
 
 [Major refactoring of nupic.core's build on Windows, Linux, and OS X](https://github.com/numenta/nupic.core/pull/885) that restored ability to build external components from source code. The legacy build included many binary components that were pre-compiled by contractor without capability to rebuild them from source or deal with ABI issues.
 
@@ -35,7 +35,7 @@ Please note that Numenta open-sourced our code in June of 2015, and all commits 
 
 ## SERVICES
 
-[Backend service prototype](https://github.com/numenta/numenta-apps/blob/d175229311046599fbe206e7a0a37e8d209e6f7a/unicorn/py/unicorn_backend/model_runner_2.py) : A very simple prototype of a back-end process that I created for the demo application project "unicorn".
+[Backend service prototype](https://github.com/numenta/numenta-apps/blob/d175229311046599fbe206e7a0a37e8d209e6f7a/unicorn/py/unicorn_backend/model_runner_2.py): A very simple prototype of a back-end process that I created for the demo application project "unicorn".
 
 [ML model execution scheduler](https://github.com/numenta/numenta-apps/tree/865680bbeaf9ba56e29f468e70ce4dd1aeec4a9c/htmengine/htmengine/model_swapper) This package is responsible for scheduling many models to run within the limitations of the machine's resources; it also implements the data path API on top of AMQP. The core scheduling logic [called SwapController is here](https://github.com/numenta/numenta-apps/blob/865680bbeaf9ba56e29f468e70ce4dd1aeec4a9c/htmengine/htmengine/model_swapper/swap_controller.py). I originated almost all of the code in this package.
 
@@ -44,9 +44,9 @@ Please note that Numenta open-sourced our code in June of 2015, and all commits 
 
 ## MONITORS
 
-https://github.com/numenta/numenta-apps/blob/f79f919e80747fae2e35e6d679f2f0633fe48789/htmengine/htmengine/monitors/rmq_metric_collector_agent.py : collects/aggregates RabbitMQ statistics for analysis, failure detection.
+https://github.com/numenta/numenta-apps/blob/f79f919e80747fae2e35e6d679f2f0633fe48789/htmengine/htmengine/monitors/rmq_metric_collector_agent.py: collects/aggregates RabbitMQ statistics for analysis, failure detection.
 
-[Stock symbol validation service](https://github.com/numenta/numenta-apps/blob/81f6e9bb4122c47fbbf6c208c795915027fac473/taurus.metric_collectors/taurus/metric_collectors/xignite/check_company_symbols.py) : detects when stock symbols of interest become invalid (e.g., are renamed, obsoleted, incorrectly configured, etc.) and generates an email that results is subsequently processed into a JIRA issue.
+[Stock symbol validation service](https://github.com/numenta/numenta-apps/blob/81f6e9bb4122c47fbbf6c208c795915027fac473/taurus.metric_collectors/taurus/metric_collectors/xignite/check_company_symbols.py): detects when stock symbols of interest become invalid (e.g., are renamed, obsoleted, incorrectly configured, etc.) and generates an email that results is subsequently processed into a JIRA issue.
 
 
 ## UTILITIES
