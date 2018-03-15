@@ -82,7 +82,7 @@ https://github.com/pika/pika : pika is a popular python AMQP client.
 
 * [Fixed channel-related bugs discovered through code review in Channel](https://github.com/pika/pika/commit/9598b4391647ca0a9e0e48dbe87d66aa116dae50)
 
-https://github.com/agoragames/haigha : haigha is another python AMQP client that we switched to recently due to licensing incompatibilities with pika at the time that numenta's code was being open-sourced. 
+https://github.com/agoragames/haigha : haigha is another python AMQP client that Numenta switched to due to licensing incompatibilities with pika at the time that numenta's code was being open-sourced. 
 
 * Haigha was missing support for several core protocol features that we needed, such as broker-initiated Basic.Cancel and Basic.Return.
 ** My Basic.Return PR: https://github.com/agoragames/haigha/pull/73.
