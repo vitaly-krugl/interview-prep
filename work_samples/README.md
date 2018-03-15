@@ -76,7 +76,7 @@ Please note that Numenta open-sourced our code in June of 2015, and all commits 
 
 https://github.com/pika/pika : pika is a popular python AMQP client.
 
-* I completely re-wrote the [BlockingConnection adapter](https://github.com/pika/pika/blame/f72b58f5181f48b362a86a2fa1226ec88ddf400c/pika/adapters/blocking_connection.py), which remedied many systemic bugs in the legacy version and resulted in upwards of 40X performance improvement. 
+* I completely re-wrote the [BlockingConnection adapter](https://github.com/pika/pika/blame/f72b58f5181f48b362a86a2fa1226ec88ddf400c/pika/adapters/blocking_connection.py), which remedied many systemic bugs in the legacy version and resulted in 40X publish performance improvement. Eliminated a great deal of difficult-to-maintain duplicate logic in favor of code reuse of the asynchronous pika stack via `SelectConnection` adapter.
 
 * I also made fixes to other parts of the code in pika that improved stability, performed code reviews, provided guidance to other contributors, and implemented a [complete acceptance test suite for the blocking adapter](https://github.com/pika/pika/blame/f72b58f5181f48b362a86a2fa1226ec88ddf400c/tests/acceptance/blocking_adapter_test.py)
 
