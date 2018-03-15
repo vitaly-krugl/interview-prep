@@ -80,6 +80,8 @@ https://github.com/pika/pika : pika is a popular python AMQP client.
 
 * I also made fixes to other parts of the code in pika that improved stability, performed code reviews, provided guidance to other contributors, and implemented a [complete acceptance test suite for the blocking adapter](https://github.com/pika/pika/blame/f72b58f5181f48b362a86a2fa1226ec88ddf400c/tests/acceptance/blocking_adapter_test.py)
 
+* [Fixed channel-related bugs discovered through code review in Channel](https://github.com/pika/pika/commit/9598b4391647ca0a9e0e48dbe87d66aa116dae50)
+
 https://github.com/agoragames/haigha : haigha is another python AMQP client that we switched to recently due to licensing incompatibilities with pika at the time that numenta's code was being open-sourced. 
 
 * Haigha was missing support for several core protocol features that we needed, such as broker-initiated Basic.Cancel and Basic.Return.
