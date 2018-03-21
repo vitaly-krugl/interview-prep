@@ -16,13 +16,13 @@ def permutations(values):
 def _doPermutations(values, perm):
     if not values:
         yield perm
-        print perm
+        print(perm)
     else:
-        for i in xrange(len(values)):
+        for i in range(len(values)):
             for result in _doPermutations(
                     values=values[0:i] + values[i+1:],
                     perm=perm + values[i:i+1]):
-                 yield result
+                yield result
 
 
 def permNoAccumulator(values):
@@ -39,6 +39,6 @@ def permNoAccumulator(values):
     elif len(values) == 1:
         yield values
     else:
-        for i in xrange(len(values)):
+        for i in range(len(values)):
             for perm in permNoAccumulator(values=values[0:i] + values[i+1:]):
-                 yield values[i:i+1] + perm
+                yield values[i:i+1] + perm

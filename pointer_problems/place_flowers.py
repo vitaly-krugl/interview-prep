@@ -20,22 +20,23 @@
 # [0, 0]
 
 def canPlaceFlowers(bed, numToPlace):
-  # assume bed is python sequence
+    # assume bed is python sequence, can place flower only if no immediate
+    # neighbors
 
-  lastFlower = None
+    lastFlower = None
 
-  for candidate, hasPlant in enumerate(bed):
-    if hasPlant:
-      lastFlower = candidate
-      continue
+    for candidate, hasPlant in enumerate(bed):
+        if hasPlant:
+            lastFlower = candidate
+            continue
 
-    if (lastFlower is None or candidate - lastFlower >= 2) and
-        (candidate == len(bed) - 1 or not bed[candidate + 1):
+        if ((lastFlower is None or candidate - lastFlower >= 2) and
+                ((candidate == len(bed) - 1) or not bed[candidate + 1])):
 
-      lastFlower = candidate
-      numToPlant -= 1
-      if not numToPlant:
-        break
+            lastFlower = candidate
+            numToPlace -= 1
+            if not numToPlace:
+              break
 
 
-    return numToPlace == 0
+        return numToPlace == 0

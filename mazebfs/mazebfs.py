@@ -33,9 +33,6 @@ might result in the following path via BFS:
 """
 
 
-from copy import deepcopy
-
-
 GOAL_SYM = "$"
 START_SYM = "@"
 WALL_SYM = "#"
@@ -72,7 +69,7 @@ def findShortestPath(maze):
 
     # First, locate the goal's coordinates
     goalR = goalC = -1
-    for goalR in xrange(len(maze)):
+    for goalR in range(len(maze)):
         try:
             goalC = maze[goalR].index(GOAL_SYM)
         except ValueError:
@@ -80,7 +77,7 @@ def findShortestPath(maze):
         else:
             break
     else:
-        raise ValueError("Goal ({}) not found".format(GOAL))
+        raise ValueError("Goal ({}) not found".format(GOAL_SYM))
 
     assert goalR >= 0 and goalC >= 0
 
@@ -145,4 +142,4 @@ def plotShortestPath(maze):
 
     # Print maze with path
     for row in maze:
-        print "".join(row)
+        print("".join(row))
